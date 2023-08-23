@@ -46,33 +46,10 @@ int main(int argc, int argv[])
 
     while(token != NULL)
     {
-        if(ispush == 1)
-        {
-            push(&head, line, token);
-            ispush = 0;
-            token = strtok(NULL, "\n\t\a\r ;:");
-            line++;
-            continue;
-        }
-        else if (strcmp(token, "push") == 0)
-        {
-            ispush = 1;
-            token = strtok(NULL, "\n\t\a\r ;:");
-            continue;
-        } else
-        {
-            if (opcode_fun(token) != 0)
-            {
-                opcode_fun(token)(&head, line);
-            } else
-            {
-                free_dlist(&head);
-                printf("L%d: unknown instruction %s\n", line, token);
-                exit(EXIT_FAILURE);
-            }
-        }
-        line++;
-        token = strtok(NULL, "\n\t\a\r ;:");
+        ______________________
+
+
+
     }
     free_dlist(&head); 
     free(buffer);
