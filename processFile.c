@@ -21,13 +21,13 @@ exit(EXIT_FAILURE);
 buffer = malloc(sizeof(char) * 10000);
 if (!buffer)
 {
-    perror("Memory allocation error");
-    exit(EXIT_FAILURE);
+perror("Memory allocation error");
+exit(EXIT_FAILURE);
 }
 n_read = read(fd, buffer, 10000);
 if (n_read == -1)
 {
-    perror("File read error");
+perror("File read error");
 free(buffer);
 close(fd);
 exit(EXIT_FAILURE);
@@ -37,16 +37,16 @@ while (token)
 {
 if (strcmp(token, "push") == 0)
 {
-    token = strtok(NULL, "\n\t\a\r ;:");
-    if (!token)
-    {
-        printf("Ettor: Missing argument for push at line %d\n", line);
-        free_dlist(&h);
-        free(buffer);
-        close(fd);
-        exit(EXIT_FAILURE);
-    }
-    push(&h, line, token);
+token = strtok(NULL, "\n\t\a\r ;:");
+if (!token)
+{
+printf("Ettor: Missing argument for push at line %d\n", line);
+free_dlist(&h);
+free(buffer);
+close(fd);
+exit(EXIT_FAILURE);
+}
+push(&h, line, token);
 }
 else
 {
