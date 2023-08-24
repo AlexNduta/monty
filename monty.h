@@ -50,6 +50,6 @@ void (*get_opcode(char *token1))(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void free_list(stack_t **head);
 void push(stack_t **stack, unsigned int line, char *token);
-
+void pint(stack_t **head, unsigned int line_number);
 #endif
 
