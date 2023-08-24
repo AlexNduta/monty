@@ -32,9 +32,9 @@ instruction_t instruction_s[NUM_INSTRUCTIONS] = {
 for (i = 0; i < NUM_INSTRUCTIONS; i++)
 {
 if (strcmp(token1, instruction_s[i].opcode) == 0)
-return instruction_s[i].f;
+return (instruction_s[i].f);
 }
 
-return NULL;
+return (NULL);
 }
 
