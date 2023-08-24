@@ -52,5 +52,7 @@ void push(stack_t **stack, unsigned int line, char *token);
 void pint(stack_t **head, unsigned int line_number);
 void _add(stack_t **head, unsigned int line_number);
 int add_end_node(stack_t **stack, int n);
+void pall(stack_t **stack, unsigned int line);
+void swap(stack_t **stack, unsigned int line_num);
 #endif
 

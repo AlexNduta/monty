@@ -4,11 +4,13 @@
  * the stack, effectively swapping their
  * positions.
  * @stack: a parameter
+ * @line_num: an unsigned integer
  */
-void swap(stack_t **stack)
+void swap(stack_t **stack, unsigned int line_num)
 {
 stack_t *top = *stack;
 stack_t *second_top = top->next;
+(void) line_num;
 
 if (*stack == NULL || (*stack)->next == NULL)
 {
