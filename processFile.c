@@ -1,7 +1,9 @@
 #include "monty.h"
+
 /**
 *processFile - open, read and tokentinze contents of our file
 *@filename: the name of the  file we are supposed to open
+*/
 void processFile(const char *filename)
 {
 int fd, line = 1;
@@ -39,7 +41,7 @@ if (strcmp(token, "push") == 0)
     if (!token)
     {
         printf("Ettor: Missing argument for push at line %d\n", line);
-        free_list(&h);
+        free_dlist(&h);
         free(buffer);
         close(fd);
         exit(EXIT_FAILURE);
@@ -48,14 +50,14 @@ if (strcmp(token, "push") == 0)
 }
 else
 {
-op_func func = get_opcode(token);
+op_func func = get_op_func(token);
 if (func)
 {
 func(&h, line);
 }
 else
 {
-free_list(&h);
+free_dlist(&h);
 printf("L%d: unknown instruction %s\n", line, token);
 free(buffer);
 close(fd);
@@ -65,7 +67,8 @@ exit(EXIT_FAILURE);
 line++;
 token = strtok(NULL, "\n\t\a\r ;:");
 }
-free_list(&h);
+free_dlist(&h);
 free(buffer);
 close(fd);
-}*/
+}
+

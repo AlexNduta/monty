@@ -1,34 +1,32 @@
 #include "monty.h"
 /**
- * swap - rearranges the top two elements of
- * the stack, effectively swapping their
- * positions.
- * @stack: a parameter
- * @line_num: an unsigned integer
+ * swap - rearranges the top two elements of the stack
+ * effectively swapping their positions
+ * @h: double pointer to a stack
+ * @line_number: unsigned integer number
  */
-void swap(stack_t **stack, unsigned int line_num)
+void swap(stack_t **h, unsigned int line_number)
 {
-stack_t *top = *stack;
-stack_t *second_top = top->next;
-(void) line_num;
+	stack_t *tmp = NULL;
 
-if (*stack == NULL || (*stack)->next == NULL)
-{
-return;
+	if (*h == NULL || (*h)->next == NULL)
+	{
+		printf("L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*h)->next;
+	if (tmp->next != NULL)
+	{
+		(*h)->next = tmp->next;
+		(*h)->next->prev = *h;
+
+	}
+	else
+	{
+		tmp->prev->prev = tmp;
+		tmp->prev->next = NULL;
+	}
+	tmp->prev = NULL;
+	tmp->next = *h;
+	(*h) = tmp;
 }
-
-if (second_top->next == NULL)
-{
-printf("Can't swap, stack too short\n");
-return;
-}
-
-top->next = second_top->next;
-second_top->next = top;
-
-second_top->prev = top->prev;
-top->prev = second_top;
-
-*stack = second_top;
-}
-
