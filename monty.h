@@ -31,4 +31,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* function definition */
+
+typedef void (*op_func)(stack_t **, unsigned int);
+void processFile(const char *filename);
+void (*get_opcode(char *token1))(stack_t **stack, unsigned int line_number);
 #endif
+
