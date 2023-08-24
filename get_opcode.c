@@ -12,11 +12,11 @@ void (*get_opcode(char *token1))(stack_t **stack, unsigned int line_number)
 int i;
 instruction_t instruction_s[NUM_INSTRUCTIONS] = {
 {"pop", pop},
-    /*
 {"pall", pall},
 {"pint", pint},
 {"swap", swap},
 {"add", _add},
+    /*
 {"sub", _sub},
 {"mul", _mul},
 {"div", _div},
