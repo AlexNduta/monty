@@ -1,39 +1,10 @@
 #include "monty.h"
 /**
- * add_end_node - adds new node to the end
- * of the stack.
- * @stack: pointer to the stack
- * @n: integer value
- * Return: 0 Always on success, -1 on failure
-int add_end_node(stack_t **stack, int n)
-{
-stack_t *new = NULL;
-
-new = malloc(sizeof(stack_t));
-if (new == NULL)
-{
-printf("Error: malloc failed");
-return (-1);
-}
-
-new->n = n;
-new->next = NULL;
-
-if (*stack == NULL)
-{
-new->prev = NULL;
-*stack = new;
-}
-else
-{
-new->prev = *stack;
-(*stack)->next = new;
-*stack = new;
-}
-
-return (0);
-} */
-
+ * add_end_node - add node to front of doubly linked list
+ * @h: pointer to head of list
+ * @n: node data
+ * Return: 0 if success, -1 if failed
+ */
 int add_end_node(stack_t **h, int n)
 {
 	stack_t *new;
@@ -65,7 +36,6 @@ int add_end_node(stack_t **h, int n)
 	}
 	return (0);
 }
-
 /**
  * delete_end_node - deletes node at end of doubly linked list
  * @h: pointer to head of doubly linked list
@@ -87,4 +57,21 @@ void delete_end_node(stack_t **h)
 		(*h)->prev = NULL;
 		free(del);
 	}
+}
+/**
+ * free_dlist - frees a doubly linked list with only int data, no strings
+ * @h: pointer to head of list
+ */
+void free_dlist(stack_t **h)
+{
+	/* return if empty list */
+	if (!h)
+		return;
+
+	while (*h && (*h)->next)
+	{
+		*h = (*h)->next;
+		free((*h)->prev);
+	}
+	free(*h);
 }

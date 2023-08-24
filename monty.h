@@ -43,16 +43,19 @@ void (*f)(stack_t **stack, unsigned int line_number);
 
 /* function definition */
 
-typedef void (*op_func)(stack_t **, unsigned int);
+/*typedef void (*op_func)(stack_t **, unsigned int);*/
 void processFile(const char *filename);
 void (*get_opcode(char *token1))(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void free_list(stack_t **head);
-void push(stack_t **stack, unsigned int line, char *token);
+/*void push(stack_t **stack, unsigned int line, char *token); */
 void pint(stack_t **head, unsigned int line_number);
 void _add(stack_t **head, unsigned int line_number);
 int add_end_node(stack_t **stack, int n);
 void pall(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line_num);
+int is_number(const char *n);
+void push(stack_t **h, unsigned int line_number, const char *n);
+void delete_end_node(stack_t **h);
 #endif
 

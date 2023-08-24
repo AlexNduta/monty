@@ -4,13 +4,11 @@
 *pop - deletes the head of the list
 *@head: a pointer to the head of our linked list
 *@line_number: the number of lines
- */
 
 void pop(stack_t **head, unsigned int line_number)
 {
 stack_t *del = *head;
 
-/*if the list is empty */
 if (head == NULL || (*head) == NULL)
 {
 printf("L%u: can't pop an empty stack\n", line_number);
@@ -19,18 +17,35 @@ exit(EXIT_FAILURE);
 }
 else
 {
-if ((*head)->next == NULL) /* if it is  the only item */
+if ((*head)->next == NULL)
 {
 *head = NULL;
-free(head); /* delete the node */
+free(head);
 }
 else
 {
-*head = (*head)->next; /*point head to the next pointer */
-(*head)->prev = NULL; /* cut previous link */
-free(del); /* delete the node */
+*head = (*head)->next;
+(*head)->prev = NULL;
+free(del);
 }
 }
 }
+*/
 
+/**
+ * pop - removes node at front of dlinkedlist
+ * @h: head of linked list (node at the bottom of stack)
+ * @line_number: bytecode line number
+ */
+void pop(stack_t **h, unsigned int line_number)
+{
+	if (h == NULL || *h == NULL)
+	{
+		printf("L%u: can't pop an empty stack\n", line_number);
+		free_list(h);
+		exit(EXIT_FAILURE);
+	}
+	else
+		delete_end_node(h);
+}
 
